@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { FontAwesome5 } from '@expo/vector-icons';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import CalculaJuros from "./Componentes/CalculaJuros";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+const Abas = createBottomTabNavigator();
+
+const App = () => (
+  
+  <NavigationContainer >
+    <Abas.Navigator>
+      <Abas.Screen name="Juros" component = { CalculaJuros } 
+      options={{
+        tabBarIcon: ({ color }) => (
+          <FontAwesome5 name="percentage" size={24} color={color} />
+        ),
+      }}
+      />
+    </Abas.Navigator>
+    
+  </NavigationContainer>
+  
+);
+
+export default App;
